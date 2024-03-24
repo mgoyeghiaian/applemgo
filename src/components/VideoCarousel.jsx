@@ -141,7 +141,7 @@ const VideoCarousel = () => {
     }
 
 
-  }, [videoId, startPlay])
+  }, [videoId, startPlay, isPlaying])
 
   return (
     <>
