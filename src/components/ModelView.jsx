@@ -4,7 +4,7 @@ import { Suspense } from "react"
 import * as THREE from 'three'
 import IPhone from "./IPhone"
 import Loader from "./Loader"
-const ModelView = ({ index, groupRef, gsapType, controlREf, size, item, setRotationState }) => {
+const ModelView = ({ index, groupRef, gsapType, controlRef, size, item, setRotationState }) => {
   return (
     <View
       index={index}
@@ -14,20 +14,20 @@ const ModelView = ({ index, groupRef, gsapType, controlREf, size, item, setRotat
     >
       {/*AMbient Light*/}
 
-      <ambientLight intensity={0.3} />
+      <ambientLight intensity={0.4} />
 
       {/*Camera */}
 
-      < PerspectiveCamera makeDefault position={[0, 0, 4]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 4]} />
       <Lights />
       <OrbitControls
         makeDefault
-        ref={controlREf}
+        ref={controlRef}
         enableZoom={false}
         enablePan={false}
         rotateSpeed={0.4}
         target={new THREE.Vector3(0, 0, 0)}
-        onEnd={() => setRotationState(controlREf.current.getAzimuthalAngle())}
+        onEnd={() => setRotationState(controlRef.current.getAzimuthalAngle())}
       />
       <group ref={groupRef} name={`${index === 1}?'small':'large'`}
         position={[0, 0, 0]}
