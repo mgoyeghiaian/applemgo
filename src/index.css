@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 * {
+  font-family: "SF Pro Display", "SF Pro Icons",;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -91,11 +92,10 @@ canvas {
   }
 
   .hiw-title {
-    @apply text-4xl md:text-7xl font-semibold text-center
+    @apply text-4xl md:text-[80px] font-semibold text-center leading-[84px];
   }
-
   .hiw-subtitle {
-    @apply text-gray font-semibold text-xl md:text-2xl py-10 text-center
+    @apply text-gray font-semibold text-xl md:text-3xl py-10 text-center
   }
 
   .hiw-video {
@@ -103,11 +103,11 @@ canvas {
   }
 
   .hiw-text-container {
-    @apply flex md:flex-row flex-col justify-between items-start gap-24
+    @apply flex md:flex-row flex-col justify-between items-start gap-36 w-[80%] 
   }
 
   .hiw-text {
-    @apply text-gray text-xl font-normal md:font-semibold
+    @apply text-gray text-[21px] font-normal md:font-semibold
   }
 
   .hiw-bigtext {

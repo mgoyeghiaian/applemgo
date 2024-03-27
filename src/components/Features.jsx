@@ -3,26 +3,32 @@ import { useRef } from 'react'
 import { animateWithGsap } from '../utils/animations'
 import { explore1Img, explore2Img, exploreVideo } from '../utils'
 import gsap from 'gsap'
-
+import { ScrollTrigger } from "gsap/all"
+gsap.registerPlugin(ScrollTrigger);
 const Features = () => {
 
   const videoRef = useRef()
   useGSAP(() => {
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to("#exploreVideo", {
-      scrollTrigger: {
-        trigger: '#exploreVideo',
-        toggleActions: 'play pause reverse restart',
-        start: '-10% bottom',
-      },
-      onComplete: () => {
-        videoRef.current.play();
-      }
-    })
-    animateWithGsap('#features_title', { y: 0, opacity: 1 })
-    animateWithGsap('.g_grow', { scale: 1, opacity: 1, ease: 'power1' }, { scrub: 6 })
-    animateWithGsap('.g_text', { y: 0, opacity: 1, ease: "power2.inOut", duration: 1 })
-  }, [])
+    // Video ScrollTrigger for play/pause based on visibility
+    ScrollTrigger.create({
+      trigger: '#exploreVideo',
+      start: 'top center',
+      end: 'bottom top',
+      onEnter: () => videoRef.current.play(),
+      onLeave: () => videoRef.current.pause(),
+      onEnterBack: () => videoRef.current.play(),
+      onLeaveBack: () => videoRef.current.pause(),
+    });
+
+    // Existing animations
+    animateWithGsap('#features_title', { y: 0, opacity: 1 });
+    animateWithGsap('.g_grow', { scale: 1, opacity: 1, ease: 'power1' }, { scrub: 5.5 });
+    animateWithGsap('.g_text', { y: 0, opacity: 1, ease: "power2.inOut", duration: 1 });
+    animateWithGsap('.g_text2', { y: 0, opacity: 1, ease: "power2.inOut", duration: 1, delay: 0.2 });
+  });
   return (
     <section className='h-full common-padding bg-zinc relative overflow-hidden'>
       <div className='screen-max-width'>
@@ -62,7 +68,7 @@ const Features = () => {
                   </div>
 
                   <div className='flex-1 flex-center '>
-                    <p className='feature-text g_text w-[60%]'>
+                    <p className='feature-text g_text2 w-[60%]'>
                       Titanium has one of the best strength‑to‑weight ratios of any metal, making these our {` `}
                       <span className=' text-white'>
                         lightest Pro models ever
