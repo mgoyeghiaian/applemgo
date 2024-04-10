@@ -16,11 +16,9 @@ const Model = () => {
     img: yellowImg,
   });
 
-  //camera controler for model view
   const cameraControlSmall = useRef();
   const cameraControlLarge = useRef();
 
-  //model
   const small = useRef(new THREE.Group());
   const large = useRef(new THREE.Group());
 
