@@ -2,7 +2,12 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { watchImg, rightImg } from "/src/utils"
 import VideoCarousel from "./VideoCarousel"
+import { useNavigate } from 'react-router-dom';
+
+
 const Highlights = () => {
+  const navigate = useNavigate();
+
   useGSAP(() => {
     gsap.to("#title", {
       opacity: 1,
@@ -23,10 +28,13 @@ const Highlights = () => {
             Get the highlights.
           </h1>
           <div className="flex flex-wrap items-end gap-5">
-            <a className="link">
+            <button
+              onClick={() => navigate('/watch-video')}
+              className="link"
+            >
               Watch the film
               <img src={watchImg} alt="Watch" className="ml-2" />
-            </a>
+            </button>
             <a href="https://www.apple.com/apple-events/" target="_blank" className="link">
               Watch the event
               <img src={rightImg} alt="Watch" className="ml-2" />
