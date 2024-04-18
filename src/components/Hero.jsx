@@ -5,6 +5,7 @@ import { heroVideo, smallHeroVideo } from "/src/utils"
 import { useState } from "react"
 import { useEffect } from "react"
 const Hero = () => {
+  
   const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
 
   const handleVideoSrcSet = () => {

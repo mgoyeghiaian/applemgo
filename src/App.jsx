@@ -15,6 +15,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={
+
           <main className="bg-black">
             <Navbar />
             <Hero />

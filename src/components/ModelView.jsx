@@ -4,6 +4,7 @@ import { Suspense } from "react"
 import * as THREE from 'three'
 import IPhone from "./IPhone"
 import Loader from "./Loader"
+
 const ModelView = ({ index, groupRef, gsapType, controlRef, size, item, setRotationState }) => {
   return (
     <View
@@ -12,11 +13,8 @@ const ModelView = ({ index, groupRef, gsapType, controlRef, size, item, setRotat
       className={`w-full absolute h-full
        ${index === 2 ? 'right-[-100%]' : ''} `}
     >
-      {/*AMbient Light*/}
 
       <ambientLight intensity={0.4} />
-
-      {/*Camera */}
 
       <PerspectiveCamera makeDefault position={[0, 0, 4]} />
       <Lights />
@@ -41,7 +39,8 @@ const ModelView = ({ index, groupRef, gsapType, controlRef, size, item, setRotat
           />
         </Suspense>
       </group>
-    </View >)
+    </View >
+  )
 }
 
 export default ModelView

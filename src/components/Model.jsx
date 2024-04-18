@@ -9,6 +9,25 @@ import { View } from "@react-three/drei";
 import { models, sizes } from '/src/constants'
 import { animateWithGsapTimeline } from "../utils/animations";
 const Model = () => {
+  useEffect(() => {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'style') {
+          const targetElement = mutation.target;
+          if (targetElement.style.touchAction === 'none') {
+            targetElement.style.touchAction = 'unset';
+          }
+        }
+      });
+    });
+
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      observer.observe(rootElement, { attributes: true });
+    }
+
+    return () => observer.disconnect();
+  }, []);
   const [size, setSize] = useState('small');
   const [model, setModel] = useState({
     title: "iPhone 15 Pro in Natural titanium",
@@ -56,7 +75,7 @@ const Model = () => {
           Take a closer look
         </h1>
         <div className=" felx flex-col items-center mt-5">
-          <div className="w-full h-[75vh] md:h-[90vh] overflow-hidden relative">
+          <div className="w-full h-[75vh] md:h-[90vh] lg:overflow-hidden relative">
 
             <ModelView
               index={1}
