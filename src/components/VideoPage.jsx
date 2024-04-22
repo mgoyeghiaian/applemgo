@@ -3,12 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player/lazy';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { AppleVideo } from '/src/utils/index.js'
 const VideoPage = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex items-center justify-center h-screen bg-[#1D1D1F] relative overflow-hidden">
-      {/* Close Button */}
       <IconButton
         aria-label="close"
         onClick={() => navigate(-1)}
@@ -26,11 +26,8 @@ const VideoPage = () => {
         <CloseIcon className=' foxt-2xl font-extrabold text-gray hover:text-white'
         />
       </IconButton>
-
-
-      {/* React Player */}
       <ReactPlayer
-        url="/public/assets/videos/Introducing iPhone 15 Pro _ Apple.mp4"
+        url={AppleVideo}
         playing
         controls
         width="70%"

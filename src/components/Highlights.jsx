@@ -28,13 +28,13 @@ const Highlights = () => {
             Get the highlights.
           </h1>
           <div className="flex flex-wrap items-end gap-5">
-            <button
-              onClick={() => navigate('/watch-video')}
-              className="link"
+            <a
+              href="/watch-video"
+              target="_blank" className="link"
             >
               Watch the film
               <img src={watchImg} alt="Watch" className="ml-2" />
-            </button>
+            </a>
             <a href="https://www.apple.com/apple-events/" target="_blank" className="link">
               Watch the event
               <img src={rightImg} alt="Watch" className="ml-2" />
