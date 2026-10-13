@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
 import gsap from 'gsap'
+import { models } from '/src/constants'
 function Model(props) {
   const { nodes, materials } = useGLTF('/models/scene.glb')
   const textures = useTexture(props.item.img)
@@ -194,3 +195,4 @@ function Model(props) {
 }
 export default Model;
 useGLTF.preload('/models/scene.glb')
+useTexture.preload(models.map((m) => m.img))

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // Renders `fallback` until the placeholder is near the viewport, then mounts children.
 // Keeps heavy things (three.js canvas, GLB, textures) from competing with first paint.
-const LazyMount = ({ children, fallback, rootMargin = '600px' }) => {
+const LazyMount = ({ children, fallback, rootMargin = '1500px' }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 

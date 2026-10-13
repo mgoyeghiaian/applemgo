@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Hero from "./components/Hero";
 import Highlights from "./components/Highlights";
@@ -10,7 +10,8 @@ import { Spinner } from './components/Loader';
 import LazyMount from './components/LazyMount';
 
 // three.js and react-player are heavy; load them off the critical path
-const Model = lazy(() => import('./components/Model'));
+const loadModel = () => import('./components/Model');
+const Model = lazy(loadModel);
 const VideoPage = lazy(() => import('./components/VideoPage'));
 
 const Fallback = () => (
@@ -31,6 +32,18 @@ const ModelSkeleton = () => (
 );
 
 const App = () => {
+  // Start fetching the 3D chunk + GLB as soon as the browser is idle, so it is
+  // ready by the time the user scrolls down to it.
+  useEffect(() => {
+    const start = () => loadModel();
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(start, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(start, 1500);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <Routes>
       <Route path="/" element={
