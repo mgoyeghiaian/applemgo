@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { heroVideo, smallHeroVideo } from '/src/utils';
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo);
+  const videoRef = useRef(null);
+  const [ready, setReady] = useState(false);
   const [playbackFailed, setPlaybackFailed] = useState(false);
 
   const handleVideoSrcSet = () => {
@@ -35,21 +37,16 @@ const Hero = () => {
     });
   }, []);
 
+  // autoPlay handles the normal case; only surface a button if the browser blocks it
   useEffect(() => {
-    const videoElement = document.querySelector('video');
-    const playVideo = async () => {
-      try {
-        await videoElement.play();
-        setPlaybackFailed(false);
-      } catch (error) {
-        setPlaybackFailed(true);
-      }
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+    const tryPlay = () => {
+      videoElement.play().then(() => setPlaybackFailed(false)).catch(() => setPlaybackFailed(true));
     };
-    videoElement.oncanplaythrough = playVideo;
-    videoElement.load();
-    return () => {
-      videoElement.oncanplaythrough = null;
-    };
+    if (videoElement.readyState >= 3) tryPlay();
+    videoElement.addEventListener('canplay', tryPlay, { once: true });
+    return () => videoElement.removeEventListener('canplay', tryPlay);
   }, [videoSrc]);
 
   const handleSmoothScroll = (event) => {
@@ -65,19 +62,22 @@ const Hero = () => {
     <section className="w-full nav-height bg-black relative">
       <div className="h-5/6 w-full flex-col flex-center">
         <p id="hero" className="hero-title">iPhone 15 Pro</p>
-        <div className="md:w-10/12 w-9/12">
+        <div className="md:w-10/12 w-9/12 relative aspect-video">
+          {!ready && <div className="skeleton absolute inset-0 rounded-3xl" aria-hidden="true" />}
           <video
+            ref={videoRef}
             autoPlay
             muted
             playsInline
             preload="auto"
             key={videoSrc}
-            className="pointer-events-none"
+            onLoadedData={() => setReady(true)}
+            className={`pointer-events-none w-full h-full media-fade ${ready ? 'opacity-100' : 'opacity-0'}`}
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
           {playbackFailed && (
-            <button onClick={() => document.querySelector('video').play()} className="btn">
+            <button onClick={() => videoRef.current?.play()} className="btn">
               Play Video
             </button>
           )}

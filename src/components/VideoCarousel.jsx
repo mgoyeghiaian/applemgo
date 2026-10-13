@@ -18,6 +18,7 @@ const VideoCarousel = () => {
   })
 
   const [loadedData, setLoadedData] = useState([]);
+  const [readyIdx, setReadyIdx] = useState({});
 
   const { isEnd, startPlay, videoId, isLastVideo, isPlaying } = video;
 
@@ -135,11 +136,12 @@ const VideoCarousel = () => {
       }
       if (isPlaying) {
         gsap.ticker.add(animUpdate)
-      } else {
+      }
+      return () => {
         gsap.ticker.remove(animUpdate)
+        anim.kill()
       }
     }
-
 
   }, [videoId, startPlay, isPlaying])
 
@@ -149,11 +151,12 @@ const VideoCarousel = () => {
         {hightlightsSlides.map((list, index) => (
           <div key={list.id} id='slider' className=' sm:pr-20 pr-10'>
             <div className=' video-carousel_container'>
-              <div className='w-full h-full flex-center rounded-3xl overflow-hidden bg-black '>
+              <div className='relative w-full h-full flex-center rounded-3xl overflow-hidden bg-black '>
+                {!readyIdx[index] && <div className='skeleton absolute inset-0' aria-hidden='true' />}
                 <video
                   id='video'
                   playsInline={true}
-                  preload='auto'
+                  preload={index === 0 ? 'auto' : 'metadata'}
                   muted
                   ref={(el) => (videoRef.current[index] = el)}
                   onEnded={() =>
@@ -168,6 +171,7 @@ const VideoCarousel = () => {
                     }))
                   }}
                   onLoadedMetadata={(e) => handleLoadedMetadata(index, e)}
+                  onLoadedData={() => setReadyIdx((r) => ({ ...r, [index]: true }))}
                   className={`${list.id === 2 && 'translate-x-44'
                     } pointer-events-none`}
                 >

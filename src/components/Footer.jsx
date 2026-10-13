@@ -1,4 +1,3 @@
-import React from 'react'
 import { footerLinks } from '/src/constants/index.js'
 const Footer = () => {
   return (
@@ -20,9 +19,11 @@ const Footer = () => {
         <div className=' bg-neutral-700 my-5 h-[1px] w-full' />
         <div className=' flex md:flex-row flex-col md:items-center justify-between'>
           <p className="text-xs font-semibold text-gray-700 flex flex-wrap items-center gap-2">
-            © 2024 Apple Inc. All rights reserved.
+            © 2024 Apple Inc. All rights reserved. A fan-made demo.
             <span className="text-white font-normal ">
-              Developed by <a href="https://www.mgoyeghiaian.com/" className="text-white  font-semibold  hover:underline hover:text-gray-200">Mgo Yeghiaian</a>
+              Designed &amp; built by <a href="https://www.mgoyeghiaian.com/" target="_blank" rel="noreferrer" className="text-white font-semibold hover:underline hover:text-gray-200">Mgo Yeghiaian</a>
+              <span className="text-gray mx-1">�</span>
+              <a href="https://www.linkedin.com/in/mgo-yeghiaian/" target="_blank" rel="noreferrer" className="text-blue hover:underline">LinkedIn</a>
             </span>
           </p>
 

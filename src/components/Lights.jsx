@@ -4,7 +4,7 @@ const Lights = () => {
   return (
     <group name="lights">
   
-      <Environment resolution={256}>
+      <Environment resolution={64}>
         <group>
         
           <Lightformer

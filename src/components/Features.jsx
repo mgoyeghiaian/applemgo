@@ -1,6 +1,4 @@
-import { useGSAP } from '@gsap/react'
 import { useEffect, useRef } from 'react'
-import { animateWithGsap } from '../utils/animations'
 import { explore1Img, explore2Img, exploreVideo } from '../utils'
 import gsap from 'gsap'
 import { ScrollTrigger } from "gsap/all"
@@ -75,8 +73,8 @@ const Features = () => {
               <h2 className='text-5xl lg:text-7xl font-semibold'>Forged in titanium.</h2>
             </div>
             <div className='flex-center flex-col sm:px-10'>
-              <div className='relative h-[50vh] w-full flex items-center'>
-                <video playsInline id='exploreVideo' className='w-full h-full object-cover object-center' preload='none' muted autoPlay ref={videoRef}>
+              <div className='relative h-[50vh] w-full flex items-center skeleton'>
+                <video playsInline id='exploreVideo' className='w-full h-full object-cover object-center' preload='metadata' muted autoPlay ref={videoRef}>
                   <source src={exploreVideo} type='video/mp4' />
                 </video>
               </div>

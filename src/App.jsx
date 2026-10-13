@@ -1,35 +1,57 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Hero from "./components/Hero";
 import Highlights from "./components/Highlights";
 import Navbar from "./components/Navbar";
-import Model from "./components/Model";
-import * as Sentry from '@sentry/react';
 import Features from "./components/Features";
 import HowItWorks from "./components/HowItWorks";
 import Footer from "./components/Footer";
-import VideoPage from './components/VideoPage'; // Assuming you have a VideoPage component
+import { Spinner } from './components/Loader';
+import LazyMount from './components/LazyMount';
+
+// three.js and react-player are heavy; load them off the critical path
+const Model = lazy(() => import('./components/Model'));
+const VideoPage = lazy(() => import('./components/VideoPage'));
+
+const Fallback = () => (
+  <div className="flex-center w-full min-h-[50vh] bg-black">
+    <Spinner />
+  </div>
+);
+
+const ModelSkeleton = () => (
+  <section className="common-padding">
+    <div className="screen-max-width">
+      <div className="skeleton h-10 w-2/3 md:w-1/3 rounded-xl" />
+      <div className="skeleton mt-8 h-[75vh] md:h-[90vh] w-full rounded-3xl flex-center">
+        <Spinner />
+      </div>
+    </div>
+  </section>
+);
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={
+    <Routes>
+      <Route path="/" element={
 
-          <main className="bg-black body">
-            <Navbar />
-            <Hero />
-            <Highlights />
-            <Model />
-            <Features />
-            <HowItWorks />
-            <Footer />
-          </main>
-        } />
-        <Route path="/watch-video" element={<VideoPage />} />
-      </Routes>
-    </Router>
+        <main className="bg-black body">
+          <Navbar />
+          <Hero />
+          <Highlights />
+          <LazyMount fallback={<ModelSkeleton />}>
+            <Suspense fallback={<ModelSkeleton />}>
+              <Model />
+            </Suspense>
+          </LazyMount>
+          <Features />
+          <HowItWorks />
+          <Footer />
+        </main>
+      } />
+      <Route path="/watch-video" element={<Suspense fallback={<Fallback />}><VideoPage /></Suspense>} />
+    </Routes>
   );
 }
 
-export default Sentry.withProfiler(App);
+export default App;

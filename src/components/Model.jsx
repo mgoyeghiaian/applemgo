@@ -28,6 +28,7 @@ const Model = () => {
 
     return () => observer.disconnect();
   }, []);
+  const [hinted, setHinted] = useState(false);
   const [size, setSize] = useState('small');
   const [model, setModel] = useState({
     title: "iPhone 15 Pro in Natural titanium",
@@ -45,7 +46,9 @@ const Model = () => {
   const [smallRotation, setSmallRotation] = useState(0);
   const [largeRotation, setLargeRotation] = useState(0);
 
-  const timeline = gsap.timeline();
+  const timelineRef = useRef(null);
+  if (!timelineRef.current) timelineRef.current = gsap.timeline();
+  const timeline = timelineRef.current;
 
   useEffect(() => {
 
@@ -62,6 +65,7 @@ const Model = () => {
       })
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size])
 
   useGSAP(() => {
@@ -75,7 +79,10 @@ const Model = () => {
           Take a closer look
         </h1>
         <div className=" felx flex-col items-center mt-5">
-          <div className="w-full h-[75vh] md:h-[90vh] lg:overflow-hidden relative">
+          <div className="w-full h-[75vh] md:h-[90vh] lg:overflow-hidden relative" onPointerDownCapture={() => setHinted(true)}>
+            <p className={`absolute bottom-4 left-0 right-0 z-10 text-center text-xs tracking-widest uppercase text-gray pointer-events-none transition-opacity duration-700 ${hinted ? 'opacity-0' : 'opacity-100 animate-pulse'}`}>
+              Drag to rotate
+            </p>
 
             <ModelView
               index={1}
@@ -107,6 +114,8 @@ const Model = () => {
                 overflow: 'hidden',
               }}
               eventSource={document.getElementById('root')}
+              dpr={[1, 1.5]}
+              gl={{ powerPreference: 'high-performance', antialias: true }}
             >
               <View.Port />
             </Canvas>

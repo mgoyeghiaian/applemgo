@@ -2,11 +2,9 @@ import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
 import { watchImg, rightImg } from "/src/utils"
 import VideoCarousel from "./VideoCarousel"
-import { useNavigate } from 'react-router-dom';
 
 
 const Highlights = () => {
-  const navigate = useNavigate();
 
   useGSAP(() => {
     gsap.to("#title", {

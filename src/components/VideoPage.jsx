@@ -1,4 +1,3 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player/lazy';
 import IconButton from '@mui/material/IconButton';
