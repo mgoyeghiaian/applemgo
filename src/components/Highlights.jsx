@@ -28,14 +28,14 @@ const Highlights = () => {
           <div className="flex flex-wrap items-end gap-5">
             <a
               href="/watch-video"
-              target="_blank" className="link"
+              target="_blank" rel="noopener" className="link"
             >
               Watch the film
-              <img src={watchImg} alt="Watch" className="ml-2" />
+              <img src={watchImg} alt="" className="ml-2" />
             </a>
-            <a href="https://www.apple.com/apple-events/" target="_blank" className="link">
+            <a href="https://www.apple.com/apple-events/" target="_blank" rel="noopener noreferrer" className="link">
               Watch the event
-              <img src={rightImg} alt="Watch" className="ml-2" />
+              <img src={rightImg} alt="" className="ml-2" />
             </a>
           </div>
         </div>

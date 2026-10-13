@@ -52,7 +52,7 @@ const HowItWorks = () => {
     <section className="common-padding">
       <div className="screen-max-width flex justify-center items-center flex-col">
         <div id="chip" className="flex-center w-full my-20">
-          <img src={chipImg} alt="chip" width={180} height={180} />
+          <img src={chipImg} alt="A17 Pro chip" width={180} height={180} />
         </div>
         <div className="flex flex-col items-center">
           <h2 className="hiw-title ">
@@ -70,7 +70,7 @@ const HowItWorks = () => {
           <div className="relative h-full flex-center">
             <div className=" overflow-hidden">
               <img src={frameImg}
-                alt="frame"
+                alt="iPhone 15 Pro gameplay on screen"
                 className="bg-transparent relative z-10"
               />
 

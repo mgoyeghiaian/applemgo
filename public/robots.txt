@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://apple15lb.netlify.app/sitemap.xml

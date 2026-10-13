@@ -2,40 +2,113 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>iPhone 15 Pro in Lebanon: Interactive 3D Showcase | Mgo Yeghiaian</title>
+    <meta
+      name="description"
+      content="Interactive 3D showcase of the iPhone 15 Pro for Lebanon and Beirut: rotate it, switch colors and sizes, watch the highlights. Built with React, Three.js and GSAP by Mgo Yeghiaian, freelance web developer in Beirut, Lebanon."
+    />
+    <meta
+      name="keywords"
+      content="iPhone 15 Pro Lebanon, iPhone 15 Pro Beirut, iPhone Lebanon, iPhone 15 Pro 3D, 3D web experience, React developer Lebanon, Three.js developer Beirut, freelance web developer Lebanon, Mgo Yeghiaian"
+    />
+    <meta name="author" content="Mgo Yeghiaian" />
+    <meta name="geo.region" content="LB" />
+    <meta name="geo.placename" content="Beirut" />
+    <link rel="alternate" hreflang="en" href="https://apple15lb.netlify.app/" />
+    <link rel="alternate" hreflang="x-default" href="https://apple15lb.netlify.app/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://apple15lb.netlify.app/" />
+
+    <!-- Icons / PWA -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apple - Mgo Yeghiaian</title>
-    <meta
-      name="description"
-      content="Mgo Yeghiaian, React.js and Three.js developer in Lebanon, builds advanced Apple-style web experiences. Available for freelance projects and remote collaborations."
-    />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Apple - Mgo Yeghiaian" />
-    <meta property="og:image" content="https://www.mgoyeghiaian.com/og-image.jpg" />
+    <meta property="og:site_name" content="Mgo Yeghiaian" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ar_LB" />
+    <meta property="og:url" content="https://apple15lb.netlify.app/" />
+    <meta property="og:title" content="iPhone 15 Pro in Lebanon: Interactive 3D Showcase | Mgo Yeghiaian" />
+    <meta
+      property="og:description"
+      content="Interactive 3D iPhone 15 Pro showcase for Lebanon. Rotate it, change colors and sizes, watch the highlights. Built by Mgo Yeghiaian in Beirut."
+    />
+    <meta property="og:image" content="https://apple15lb.netlify.app/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta name="twitter:image" content="https://www.mgoyeghiaian.com/og-image.jpg" />
-    <meta property="og:description" content="An interactive iPhone 15 Pro experience built with React, Three.js and GSAP." />
+    <meta property="og:image:alt" content="iPhone 15 Pro in a titanium frame next to the text 'Forged in titanium'" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="iPhone 15 Pro Interactive 3D Experience" />
+    <meta
+      name="twitter:description"
+      content="An interactive iPhone 15 Pro built with React, Three.js and GSAP by Mgo Yeghiaian."
+    />
+    <meta name="twitter:image" content="https://apple15lb.netlify.app/og-image.jpg" />
+    <meta name="twitter:image:alt" content="iPhone 15 Pro in a titanium frame" />
+
+    <!-- Structured data -->
     <script type="application/ld+json">
       {
-        "@context": "http://schema.org",
-        "@type": "Person",
-        "name": "Mgo Yeghiaian",
-        "jobTitle": ["Full Stack Web Developer", "Frontend Developer", "React Developer"],
-        "url": "https://www.mgoyeghiaian.com",
-        "sameAs": ["https://www.linkedin.com/in/mgo-yeghiaian/"]
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://apple15lb.netlify.app/#website",
+            "url": "https://apple15lb.netlify.app/",
+            "name": "iPhone 15 Pro in Lebanon: Interactive 3D Showcase",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://apple15lb.netlify.app/#person" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://apple15lb.netlify.app/#webpage",
+            "url": "https://apple15lb.netlify.app/",
+            "name": "iPhone 15 Pro Interactive 3D Experience",
+            "isPartOf": { "@id": "https://apple15lb.netlify.app/#website" },
+            "primaryImageOfPage": "https://apple15lb.netlify.app/og-image.jpg",
+            "about": "iPhone 15 Pro",
+            "spatialCoverage": { "@type": "Country", "name": "Lebanon" },
+            "author": { "@id": "https://apple15lb.netlify.app/#person" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://apple15lb.netlify.app/#person",
+            "name": "Mgo Yeghiaian",
+            "url": "https://www.mgoyeghiaian.com",
+            "jobTitle": ["Full Stack Web Developer", "Frontend Developer", "React Developer"],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Beirut",
+              "addressCountry": "LB"
+            },
+            "knowsAbout": ["React.js", "Three.js", "GSAP", "Node.js", "UI/UX Design", "Web Development"],
+            "knowsLanguage": ["Arabic", "English", "Armenian"],
+            "sameAs": ["https://www.linkedin.com/in/mgo-yeghiaian/"]
+          }
+        ]
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>iPhone 15 Pro in Lebanon: Interactive 3D Showcase</h1>
+      <p>
+        An interactive iPhone 15 Pro built with React, Three.js and GSAP by Mgo Yeghiaian.
+        Please enable JavaScript to explore it.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -81,10 +81,10 @@ const Features = () => {
               <div className='flex flex-col w-full relative'>
                 <div className='feature-video-container'>
                   <div className='overflow-hidden flex-1 h-[50vh]'>
-                    <img src={explore1Img} alt='titanium' className='feature-video g_grow' />
+                    <img src={explore1Img} alt='iPhone 15 Pro titanium frame close-up' className='feature-video g_grow' />
                   </div>
                   <div className='overflow-hidden flex-1 h-[50vh]'>
-                    <img src={explore2Img} alt='titanium2' className='feature-video g_grow' />
+                    <img src={explore2Img} alt='iPhone 15 Pro titanium edge and buttons' className='feature-video g_grow' />
                   </div>
                 </div>
                 <div className='feature-text-container'>
